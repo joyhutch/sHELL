@@ -20,6 +20,8 @@ void *lazy_print(char *szArg) {
   WriteFile(stdOut, szArg, lstrlenA(szArg), NULL, NULL);
 }
 
+// form of run-time linking 
+// called once when module is loaded
 InternalAPI *core = NULL;
 __declspec(dllexport) BOOL CommandInit(InternalAPI *lpCore) {
   core = lpCore;

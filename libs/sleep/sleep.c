@@ -37,7 +37,17 @@ __declspec(dllexport) LPVOID CommandRunA(int argc, char **argv) {
     core->wprintf(L"Invalid input:\n %S\n", Help);
     return NULL;
   }
-  // // your answer here
+  
+  // convert input argument to milliseconds
+  int ms = StrToIntA(argv[1]);
+  if (ms == 0 && GetLastError() != ERROR_SUCCESS) {
+    debug_wprintf(L"[!] Failed to convert input to integer.\n");
+    return NULL;
+  }
+
+  debug_wprintf(L"[+] sleeping for %d miliseconds ...\n", ms);
+  Sleep(ms);
+  debug_wprintf(L"[+] waking up \n");
   return (LPVOID)1;
 }
 

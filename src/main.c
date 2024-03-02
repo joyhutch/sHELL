@@ -91,6 +91,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
   if (InitializeCore() != TRUE) {
     return -1;
   }
+
   debug_wprintf(L"[+] Initialied Core Functionality\n");
   // load all modules passed in via commandline
   if (LoadModulesFromCommandline() != TRUE) {
@@ -111,6 +112,7 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
       debug_wprintf(L"%d %S=%lu %d \n", i, argv[i],
                     djb2Hash((unsigned char *)argv[i]), strlen(argv[i]));
     }
+    
     if (argc > 0) {
       stripnewline(argv[0]);
       unsigned int hash = djb2Hash((unsigned char *)argv[0]);
@@ -125,10 +127,12 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
       }
       wprintf(L"Unknown command\n");
     }
+
   DONE_COMMAND:
     s_free(argv);
     argc = 0;
   }
+
   ExitProcess(0);
   return 0;
 }

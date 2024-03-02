@@ -47,7 +47,7 @@ BOOL WriteStdOutLarge(char *data, ULONGLONG qp);
 BOOL ResolveCommandDependencies(CommandDependency deps[]);
 
 typedef struct InternalAPI {
-  fnResolveCommandDependencies *ResolveCommandDependnecies;
+  fnResolveCommandDependencies *ResolveCommandDependnecies; 
   // Print
   t_wprintf *wprintf;
   t_sprintf *sprintf;
@@ -60,7 +60,6 @@ typedef struct InternalAPI {
   t_calloc *calloc;
   t_realloc *realloc;
   // Utils
-
   t_strlen *strlen;
   t_wstrlen *wstrlen;
   t_strcmp *strcmp;
@@ -71,10 +70,11 @@ typedef struct InternalAPI {
   t_stripnewline *stripnewline;
 
   t_memset *memset;
+  // use following 2 to find anything else
   HMODULE hKernel32;
   _GetProcAddress *hGetProcAddress;
-  CommandA *gaCommandsA;
-  size_t *gModuleCount;
+  CommandA *gaCommandsA; // array of all loaded modules
+  size_t *gModuleCount; // number of loaded modules 
 
 } InternalAPI;
 

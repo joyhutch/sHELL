@@ -29,10 +29,10 @@ __declspec(dllexport) const char *CommandNameA() { return Name; }
 // Exported function - Help
 __declspec(dllexport) const char *CommandHelpA() { return Help; }
 
-// Exported function - Run
+// Exported function - Runa
 __declspec(dllexport) LPVOID CommandRunA(int argc, char **argv) {
-  // Example implementation: print arguments and return count
-  // // your answer here
+  core->wprintf(L"exiting sHELL ... \n");
+  ExitProcess(0);
   return 0;
 }
 
